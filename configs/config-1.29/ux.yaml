@@ -1,0 +1,13 @@
+packages:
+- coreutils
+- file
+- jq
+- less
+- sudo
+- vim-minimal
+- lsof
+- openssh-server
+- bzip2
+- gzip
+- tar
+- xz

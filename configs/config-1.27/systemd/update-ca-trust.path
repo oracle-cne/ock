@@ -1,0 +1,9 @@
+[Unit]
+Description="Monitor /etc/pki/ca-trust/source/anchors for changes"
+
+[Path]
+PathModified=/etc/pki/ca-trust/source/anchors
+Unit=update-ca-trust.service
+
+[Install]
+WantedBy=multi-user.target

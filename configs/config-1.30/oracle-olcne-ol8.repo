@@ -1,0 +1,50 @@
+[ol8_olcne12]
+name=Oracle Linux Cloud Native Environment version 1.2 ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/olcne12/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=0
+
+[ol8_olcne13]
+name=Oracle Linux Cloud Native Environment version 1.3 ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/olcne13/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=0
+
+[ol8_olcne16]
+name=Oracle Linux Cloud Native Environment version 1.6 ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/olcne16/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=0
+
+[ol8_olcne17]
+name=Oracle Linux Cloud Native Environment version 1.7 ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/olcne17/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=0
+
+[ol8_olcne18]
+name=Oracle Linux Cloud Native Environment version 1.8 ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/olcne18/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+priority=90
+enabled=0
+
+[ol8_olcne19]
+name=Oracle Linux Cloud Native Environment version 1.9 ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/olcne19/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+priority=90
+enabled=1
+
+[ol8_developer_olcne]
+name=Developer Preview for Oracle Linux Cloud Native Environment ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/developer/olcne/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=0
