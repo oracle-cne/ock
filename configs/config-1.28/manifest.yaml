@@ -11,6 +11,7 @@ repos:
 - ol8_olcne18
 - ol8_kvm_appstream
 - ol8_developer_EPEL
+- ol8_ocne
 
 include:
 - base.yaml
