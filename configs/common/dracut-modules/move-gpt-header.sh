@@ -39,6 +39,5 @@ for DEV in $(ls /dev); do
 	fi
 done
 
-mount "${ROOT}" /sysroot
-growpart "${DISK}" "${PARTITION}" || true
-xfs_growfs "${ROOT}"
+sgdisk -e "${DISK}"
+udevadm trigger --settle
