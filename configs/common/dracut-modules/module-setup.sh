@@ -24,6 +24,7 @@ install() {
 	inst_script "$moddir/grow-rootfs.sh" /usr/sbin/grow-rootfs
 	inst_script "$moddir/make-rootfs.sh" /usr/sbin/make-rootfs
 	inst_script "$moddir/move-gpt-header.sh" /usr/sbin/move-gpt-header
+	inst_script "$moddir/partition-info.sh" /usr/sbin/partition-info
 	inst_simple "$moddir/grow-rootfs.service" "$systemdsystemunitdir/grow-rootfs.service"
 	inst_simple "$moddir/make-rootfs.service" "$systemdsystemunitdir/make-rootfs.service"
 	inst_simple "$moddir/move-gpt-header.service" "$systemdsystemunitdir/move-gpt-header.service"

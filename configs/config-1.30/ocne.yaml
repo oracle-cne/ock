@@ -33,6 +33,7 @@ add-files:
 - ["files/storage.conf", "/etc/containers/storage.conf"]
 - ["systemd/usr-lib-opt-cni-bin.mount", "/etc/systemd/system/usr-lib-opt-cni-bin.mount"]
 - ["dracut-modules/module-setup.sh", "/usr/lib/dracut/modules.d/35ocne/module-setup.sh"]
+- ["dracut-modules/partition-info.sh", "/usr/lib/dracut/modules.d/35ocne/partition-info.sh"]
 - ["dracut-modules/grow-rootfs.sh", "/usr/lib/dracut/modules.d/35ocne/grow-rootfs.sh"]
 - ["dracut-modules/grow-rootfs.service", "/usr/lib/dracut/modules.d/35ocne/grow-rootfs.service"]
 - ["dracut-modules/make-rootfs.sh", "/usr/lib/dracut/modules.d/35ocne/make-rootfs.sh"]
