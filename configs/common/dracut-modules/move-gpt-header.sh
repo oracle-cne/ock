@@ -10,10 +10,7 @@ DEVICES=$(/usr/sbin/partition-info "${ROOT}")
 
 read -r -a ROOT_DEVICES <<< "$DEVICES"
 DISK="${ROOT_DEVICES[0]}"
-PARTITION="${ROOT_DEVICES[1]}"
-ROOT="${ROOT_DEVICES[2]}"
 
-# Expand the parition and the filesystem on that partition
-mount "${ROOT}" /sysroot
-growpart "${DISK}" "${PARTITION}" || true
-xfs_growfs "${ROOT}"
+# Move the GPT header to the end of the disk
+sgdisk -e "${DISK}"
+udevadm trigger --settle
