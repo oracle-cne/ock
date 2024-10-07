@@ -1,7 +1,0 @@
-[Unit]
-Description=Reset OCNE
-
-[Service]
-Type=oneshot
-ExecStart=/etc/ocne/ocne-reset.sh
-RemainAfterExit=no
