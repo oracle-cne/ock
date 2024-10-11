@@ -25,7 +25,7 @@ packages:
 - shim
 - efibootmgr
 - iscsi-initiator-utils
-- kernel-uek-modules-5.15.0
+- kernel-uek-modules
 
 packages-x86_64:
 - grub2-efi-x64
