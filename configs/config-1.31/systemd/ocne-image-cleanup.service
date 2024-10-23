@@ -1,0 +1,13 @@
+[Unit]
+Description=Image cleanup service for OCNE
+Before=crio.service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/ocne/ocne-image-cleanup.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

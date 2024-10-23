@@ -1,0 +1,12 @@
+[Unit]
+Description=Disable Ignition
+Requires=ignition-complete.target
+After=ignition-complete.target
+
+[Service]
+Type=oneshot
+ExecStart=rpm-ostree kargs --delete-if-present=ignition.firstboot=1
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

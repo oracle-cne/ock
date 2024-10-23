@@ -1,0 +1,8 @@
+[Unit]
+Description="Update CA trust store when new anchors are added"
+
+[Service]
+ExecStart=update-ca-trust
+
+[Install]
+WantedBy=multi-user.target

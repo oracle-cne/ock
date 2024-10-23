@@ -1,0 +1,31 @@
+ref: ock
+automatic-version-prefix: "1.31"
+
+documentation: false
+boot-location: modules
+
+repos:
+- ol8_baseos_latest
+- ol8_UEKR7
+- ol8_appstream
+- ol8_olcne19
+- ol8_kvm_appstream
+- ol8_developer_EPEL
+- ol8_ocne
+
+include:
+- base.yaml
+- ux.yaml
+- ocne.yaml
+- removals.yaml
+
+readonly-executables: true
+
+preserve-passwd: false
+
+tmp-is-dir: true
+
+modules:
+  enable:
+    - container-tools:ol8
+    - virt:kvm_utils3

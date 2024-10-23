@@ -1,0 +1,12 @@
+[Unit]
+Description=Boostrap process for OCNE
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/ocne/ocne.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

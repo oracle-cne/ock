@@ -1,0 +1,26 @@
+[Unit]
+Description=Fix Root Disk GPT Headers
+DefaultDependencies=false
+
+# Go before any root filesystem mounting
+Before=initrd-root-fs.target
+Before=sysroot.mount
+Requires=systemd-udevd.service
+
+# Go after devices are enumerating
+After=systemd-udevd.service
+
+# Go before Ignition configures disks to make sure it
+# has an accurate understanding of the disk geometry.
+Before=ignition-disks.service
+
+# Don't get stuck in a loop if things go sideways
+OnFailure=emergency.target
+OnFailureJobMode=isolate
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+MountFlags=slave
+ExecStart=/usr/sbin/move-gpt-header
+

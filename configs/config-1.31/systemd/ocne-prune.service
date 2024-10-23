@@ -1,0 +1,12 @@
+[Unit]
+Description=Prune the ostree
+After=kubelet.service
+Before=ocne-update.service
+
+[Service]
+Type=oneshot
+ExecStart=/etc/ocne/ocne-prune.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

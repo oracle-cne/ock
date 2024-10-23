@@ -1,0 +1,6 @@
+[ol8_kvm_appstream]
+name=Oracle Linux $releasever KVM Application Stream ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/kvm/appstream/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=1
