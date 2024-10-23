@@ -1,0 +1,26 @@
+[Unit]
+Description=Grow Root Filesystem
+DefaultDependencies=false
+
+# Go before any root filesystem mounting
+Before=initrd-root-fs.target
+Before=sysroot.mount
+Requires=systemd-udevd.service
+
+# Go after devices are enumerating
+After=systemd-udevd.service
+
+# Go after ignition does the disk work, ensuring
+# that all partitions are created before trying to
+# consume the rest of the space.
+After=ignition-disks.service
+
+# Don't get stuck in a loop if thigns go sideways
+OnFailure=emergency.target
+OnFailureJobMode=isolate
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+MountFlags=slave
+ExecStart=/usr/sbin/grow-rootfs
