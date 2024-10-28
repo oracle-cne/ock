@@ -8,6 +8,9 @@ packages:
 - keepalived
 - kubernetes-imgs-1.27.12
 - qemu-kvm-7.2.0
+- ocne-selinux
+- audit
+- openssh-clients
 
 add-files:
 - ["systemd/update-ca-trust.service", "/usr/lib/systemd/system/update-ca-trust.service"]
