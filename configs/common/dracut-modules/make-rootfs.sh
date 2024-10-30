@@ -14,5 +14,7 @@ mkdir -p /sysroot/var/home
 mkdir -p /sysroot/var/ocne/cni/bin
 mkdir -p /sysroot/var/ocne/cni/bin-workdir
 
+setfiles -vFi0 -r /sysroot /sysroot/etc/selinux/targeted/contexts/files/file_contexts /sysroot/var
+
 # Work around https://github.com/coreos/rpm-ostree/issues/29
 grep -E '^wheel:' /sysroot/usr/lib/group >> /sysroot/etc/group
