@@ -2,10 +2,12 @@
 Description=Disable Ignition
 Requires=ignition-complete.target
 After=ignition-complete.target
+After=boot.mount
 
 [Service]
 Type=oneshot
 ExecStart=rpm-ostree kargs --delete-if-present=ignition.firstboot=1
+ExecStart=sh -c "grubby --remove-args=ignition.firstboot=1 --update-kernel=/boot$(cat /proc/cmdline  | cut -d' ' -f1 | cut -d')' -f2)"
 RemainAfterExit=no
 
 [Install]
