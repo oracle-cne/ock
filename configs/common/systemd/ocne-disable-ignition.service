@@ -2,6 +2,7 @@
 Description=Disable Ignition
 Requires=ignition-complete.target
 After=ignition-complete.target
+After=boot.mount
 
 [Service]
 Type=oneshot
