@@ -19,7 +19,12 @@ while [ $i -le 20 ]; do
 	if [ -L "${ROOT}" ]; then
 		# Get the major:minor device id and then follow the
 		# symlink over to its location in /sys/devices
-		ROOT_DEVICE="$(realpath /sys/dev/block/$(stat -L -c '%t:%T' ${ROOT}))"
+		MAJOR_ID=$(stat -L -c '%t' ${ROOT})
+		MINOR_ID=$(stat -L -c '%T' ${ROOT})
+
+		MAJOR_ID=$((16#${MAJOR_ID}))
+		MINOR_ID=$((16#${MINOR_ID}))
+		ROOT_DEVICE="$(realpath /sys/dev/block/${MAJOR_ID}:${MINOR_ID})"
 		break
 	fi
 	((i++)) || true
@@ -42,7 +47,16 @@ DISK=
 # Troll through the entries in /dev/ looking for the right
 # device id.
 for DEV in $(ls /dev); do
-	if [ "${DISK_DEVICE_NUMBER}" = "$(stat -L -c '%t:%T' /dev/${DEV})" ]; then
+	if [[ "$(stat -L -c '%F' /dev/${DEV})" != "block special file" ]]; then
+		continue
+	fi
+
+	MAJOR_ID=$(stat -L -c '%t' /dev/${DEV})
+	MINOR_ID=$(stat -L -c '%T' /dev/${DEV})
+	MAJOR_ID=$((16#${MAJOR_ID}))
+	MINOR_ID=$((16#${MINOR_ID}))
+
+	if [ "${DISK_DEVICE_NUMBER}" = "${MAJOR_ID}:${MINOR_ID}" ]; then
 		DISK="/dev/${DEV}"
 		break
 	fi
