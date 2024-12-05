@@ -1,0 +1,8 @@
+enable ocne-disable-ignition.service
+enable ocne.service
+enable ocne-prune.service
+enable ocne-update.service
+enable ocne-image-cleanup.service
+enable usr-lib-opt-cni-bin.mount
+disable ocne-nginx.service
+disable keepalived.service

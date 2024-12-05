@@ -13,6 +13,7 @@ packages:
 - openssh-clients
 
 add-files:
+- ["systemd/80-ocne.preset", "/usr/lib/systemd/system-preset/80-ocne.preset"]
 - ["systemd/update-ca-trust.service", "/usr/lib/systemd/system/update-ca-trust.service"]
 - ["systemd/update-ca-trust.path", "/usr/lib/systemd/system/update-ca-trust.path"]
 - ["systemd/ocne-disable-ignition.service", "/usr/lib/systemd/system/ocne-disable-ignition.service"]
@@ -43,17 +44,6 @@ add-files:
 - ["dracut-modules/make-rootfs.service", "/usr/lib/dracut/modules.d/35ocne/make-rootfs.service"]
 - ["dracut-modules/move-gpt-header.sh", "/usr/lib/dracut/modules.d/35ocne/move-gpt-header.sh"]
 - ["dracut-modules/move-gpt-header.service", "/usr/lib/dracut/modules.d/35ocne/move-gpt-header.service"]
-
-
-units:
-- ocne-disable-ignition.service
-- ocne.service
-- ocne-prune.service
-- ocne-update.service
-- ocne-image-cleanup.service
-- ocne-nginx.service
-- keepalived.service
-- usr-lib-opt-cni-bin.mount
 
 postprocess:
 - rm /etc/cni/net.d/100-crio-bridge.conf
