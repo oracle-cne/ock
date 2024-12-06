@@ -3,6 +3,7 @@ automatic-version-prefix: "1.28"
 
 documentation: false
 boot-location: modules
+machineid-compat: false
 
 repos:
 - ol8_baseos_latest
