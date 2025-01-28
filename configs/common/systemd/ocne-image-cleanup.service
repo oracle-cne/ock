@@ -1,6 +1,7 @@
 [Unit]
 Description=Image cleanup service for OCNE
-Before=crio.service
+Before=kubelet.service
+After=crio.service
 After=network-online.target
 Wants=network-online.target
 
