@@ -13,4 +13,5 @@ DISK="${ROOT_DEVICES[0]}"
 
 # Move the GPT header to the end of the disk
 sgdisk -e "${DISK}"
-udevadm trigger --settle
+udevadm trigger
+udevadm settle

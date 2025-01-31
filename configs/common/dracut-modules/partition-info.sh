@@ -6,7 +6,8 @@ set -e
 set -x
 
 # Do the level best to have a calm device tree.
-udevadm trigger --settle
+udevadm trigger
+udevadm settle
 
 ROOT="$1"
 ROOT_DEVICE=
