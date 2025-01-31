@@ -7,7 +7,7 @@ set -x
 
 # Do the level best to have a calm device tree.
 udevadm trigger
-udevadm settle
+udevadm settle --timeout=300
 
 ROOT="$1"
 ROOT_DEVICE=
