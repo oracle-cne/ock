@@ -53,7 +53,7 @@
 # Require a TTY
 #
 Defaults   use_pty
-Defaults   requiretty
+#Defaults   requiretty
 
 #
 # Log to disk
