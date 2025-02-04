@@ -1,0 +1,50 @@
+flush ruleset
+include "/etc/nftables/kube.nft"
+include "/etc/nftables/kube-svcs.nft"
+table inet nftables_svc {
+    set allowed_protocols {
+	    type inet_proto
+	    elements = { icmp, icmpv6, vrrp }
+    }
+    set allowed_interfaces {
+	    type ifname
+	    elements = { "lo", "cni0" }
+    }
+    set kube_ports {
+      type inet_service
+      elements = $kube_ports
+    }
+    set kube_svc_tcp_ports {
+      type inet_service
+      elements = $kube_svc_tcp_ports
+    }
+    set kube_svc_udp_ports {
+      type inet_service
+      elements = $kube_svc_udp_ports
+    }
+    set allowed_tcp_dports {
+	    type inet_service
+	    elements = { ssh, 9100, 10255, 10250, 10249, 10252, 10251, 10257, 10259, 2379, 2380, 2381 }
+    }
+    set allowed_udp_dports {
+	    type inet_service
+	    elements = { 8472 }
+    }
+    chain allow {
+	    ct state established,related accept
+	    meta l4proto @allowed_protocols accept
+	    iifname @allowed_interfaces accept
+	    tcp dport @allowed_tcp_dports mark set mark or 0x8000 return
+	    tcp dport @kube_ports mark set mark or 0x8000 return
+	    tcp dport @kube_svc_tcp_ports mark set mark or 0x8000 return
+	    udp dport @kube_svc_udp_ports mark set mark or 0x8000 return
+	    udp dport @allowed_udp_dports mark set mark or 0x8000 return
+    }
+    chain INPUT {
+	    type filter hook input priority filter + 20
+	    policy accept
+	    jump allow
+	    meta mark and 0x8000 == 0x8000 accept
+	    reject with icmpx type port-unreachable
+    }
+}
