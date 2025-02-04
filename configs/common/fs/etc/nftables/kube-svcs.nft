@@ -1,0 +1,2 @@
+define kube_svc_tcp_ports = {}
+define kube_svc_udp_ports = {}

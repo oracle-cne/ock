@@ -49,4 +49,5 @@ add-files:
 postprocess:
 - rm /etc/cni/net.d/100-crio-bridge.conf
 - groupadd -r keepalived_script
+- groupadd sugroup
 - useradd -r -s /sbin/nologin -g keepalived_script -M keepalived_script
