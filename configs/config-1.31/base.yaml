@@ -1,0 +1,36 @@
+packages:
+- ostree
+- rpm-ostree
+- kernel-uek-core
+- xfsprogs
+- e2fsprogs
+- chrony
+- polkit
+- systemd-container
+- containernetworking-plugins podman-plugins dnsmasq
+- iptables
+- attr
+- openssl
+- ncurses
+- kbd
+- irqbalance
+- nss-altfiles
+- NetworkManager hostname
+- iproute
+- socat net-tools bind-utils
+- nmstate
+- ipcalc
+- skopeo-1.14.3
+- cloud-utils-growpart
+- shim
+- efibootmgr
+- iscsi-initiator-utils
+- kernel-uek-modules
+
+packages-x86_64:
+- grub2-efi-x64
+- grub2-tools-efi
+
+packages-aarch64:
+- grub2-efi-aa64
+- grub2-tools
