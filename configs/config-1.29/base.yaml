@@ -20,7 +20,7 @@ packages:
 - socat net-tools bind-utils
 - nmstate
 - ipcalc
-- skopeo-1.14.3
+- skopeo
 - cloud-utils-growpart
 - shim
 - efibootmgr
