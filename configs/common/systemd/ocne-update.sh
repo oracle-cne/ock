@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# Copyright (c) 2024, Oracle and/or its affiliates.
+# Copyright (c) 2024, 2025, Oracle and/or its affiliates.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
 
 # Image is set via drop-in to OCNE_OS_IMAGE
@@ -36,6 +36,35 @@ case "$ARCH" in
 	* ) echo "Architecture $ARCH is not supported"; exit 1 ;;
 esac
 
+# Get the Skopeo transport from the ostree transport
+SKOPEO_TRANSPORT=
+OCNE_OS_IMAGE="$OCNE_OS_REGISTRY"
+case "$OSTREE_TRANSPORT" in
+	*docker:// )
+		SKOPEO_TRANSPORT="docker://" ;;
+	ostree-unverified-image:*  | ostree-image-signed:* )
+		SKOPEO_TRANSPORT="$(echo "$OSTREE_TRANSPORT" | cut -d: -f2-):"
+		OSTREE_TRANSPORT="$OSTREE_TRANSPORT:"
+		;;
+	ostree-unverified-registry )
+		SKOPEO_TRANSPORT="docker://"
+		OSTREE_TRANSPORT="$OSTREE_TRANSPORT:"
+		;;
+	ostree-remote-image:*:* | ostree-remote-registry:*:* )
+		SKOPEO_TRANSPORT="$(echo "$OSTREE_TRANSPORT" | cut -d: -f3-):"
+		OSTREE_TRANSPORT="$OSTREE_TRANSPORT:"
+		;;
+	*) echo "Invalid ostree transport: $OSTREE_TRANSPORT"; exit 1 ;;
+esac
+
+# Add the tag if necessary
+case "$SKOPEO_TRANSPORT" in
+	containers-storage* | docker:// | docker-* | ostree* )
+		OCNE_OS_IMAGE="$OCNE_OS_IMAGE:$OCNE_OS_TAG" ;;
+	*)
+		;;
+esac
+
 # Use the kubelet kubeconfig as the credentials for talking to
 # the cluster.  They are guaranteed to be there if the node
 # can be annotated.
@@ -44,7 +73,7 @@ export KUBECONFIG=/etc/kubernetes/kubelet.conf
 # Check for updates and if an update is available, apply it to the ostree
 update() {
 	# Inspect the ostree image to get the manifest
-	MANIFEST=$(skopeo inspect "docker://$OCNE_OS_IMAGE")
+	MANIFEST=$(skopeo inspect "$SKOPEO_TRANSPORT$OCNE_OS_IMAGE")
 
 	if [ $? -ne 0 ]; then
 		echo Could not inspect image: "$OCNE_OS_IMAGE"
@@ -79,7 +108,7 @@ update() {
 
 	# Rebase to the ostree image, this will pull the image, unencapsulate the ostree, and commit
 	echo Unencapsulating image
-	rpm-ostree rebase --experimental --os=ock --download-only "$OSTREE_TRANSPORT:$OCNE_OS_IMAGE"
+	rpm-ostree rebase --experimental --os=ock --download-only "$OSTREE_TRANSPORT$OCNE_OS_IMAGE"
 	if [ $? -ne 0 ]; then
 		echo Could not unencapsulate updated image
 		return
