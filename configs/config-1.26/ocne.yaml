@@ -1,13 +1,13 @@
 packages:
-- kubelet-1.26.6
-- kubeadm-1.26.6
-- kubectl-1.26.6
+- kubelet-1.26.15
+- kubeadm-1.26.15
+- kubectl-1.26.15
 - podman
 - yq
 - ignition-2.16.2
 - keepalived
 - cri-o-1.26.4
-- kubernetes-imgs-1.26.6
+- kubernetes-imgs-1.26.15
 - ocne-selinux
 - audit
 - openssh-clients

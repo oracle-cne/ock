@@ -1,8 +1,8 @@
 packages:
-- kubelet-1.31.5
-- kubeadm-1.31.5
-- kubectl-1.31.5
-- kubernetes-imgs-1.31.5
+- kubelet-1.31.6
+- kubeadm-1.31.6
+- kubectl-1.31.6
+- kubernetes-imgs-1.31.6
 - podman
 - yq
 - ignition-2.16.2
