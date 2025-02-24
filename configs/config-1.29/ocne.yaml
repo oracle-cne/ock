@@ -1,11 +1,11 @@
 packages:
-- kubelet-1.29.3
-- kubeadm-1.29.3
-- kubectl-1.29.3
+- kubelet-1.29.14
+- kubeadm-1.29.14
+- kubectl-1.29.14
 - podman
 - yq
 - ignition-2.16.2
-- kubernetes-imgs-1.29.3
+- kubernetes-imgs-1.29.14
 - keepalived
 - qemu-kvm-7.2.0
 - ocne-selinux

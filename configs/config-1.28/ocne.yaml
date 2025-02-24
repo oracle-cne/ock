@@ -1,11 +1,11 @@
 packages:
-- kubelet-1.28.8
-- kubeadm-1.28.8
-- kubectl-1.28.8
+- kubelet-1.28.15
+- kubeadm-1.28.15
+- kubectl-1.28.15
 - podman
 - yq
 - ignition-2.16.2
-- kubernetes-imgs-1.28.8
+- kubernetes-imgs-1.28.15
 - keepalived
 - olcne-selinux
 - qemu-kvm-7.2.0
