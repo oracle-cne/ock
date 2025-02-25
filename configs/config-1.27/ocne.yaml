@@ -29,6 +29,7 @@ add-files:
 - ["systemd/ocne-kubeadm-upgrade.sh", "/etc/ocne/ocne-kubeadm-upgrade.sh"]
 - ["systemd/ocne-prune.service", "/usr/lib/systemd/system/ocne-prune.service"]
 - ["systemd/ocne-prune.sh", "/etc/ocne/ocne-prune.sh"]
+- ["systemd/kube-update.conf", "/etc/systemd/system/kubelet.service.d/kube-update.conf"]
 - ["files/crio.conf", "/etc/crio/crio.conf"]
 - ["files/kubeadm-default.conf", "/etc/ocne/kubeadm-default.conf"]
 - ["files/check-node-health.sh", "/usr/bin/check-node-health.sh"]
