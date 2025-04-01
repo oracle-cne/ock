@@ -26,6 +26,7 @@ packages:
 - efibootmgr
 - iscsi-initiator-utils
 - kernel-uek-modules
+- nfs-utils
 
 packages-x86_64:
 - grub2-efi-x64
