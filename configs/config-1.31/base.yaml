@@ -27,6 +27,7 @@ packages:
 - iscsi-initiator-utils
 - kernel-uek-modules
 - nfs-utils
+- passwd
 
 packages-x86_64:
 - grub2-efi-x64
