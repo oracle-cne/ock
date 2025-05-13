@@ -8,6 +8,7 @@ add-files:
 - ["fs/etc/security/pwquality.conf", "/etc/security/pwquality.conf"]
 - ["fs/etc/security/pwhistory.conf", "/etc/security/pwhistory.conf"]
 - ["fs/etc/sysctl.d/30-harden.conf", "/etc/sysctl.d/30-harden.conf"]
+- ["fs/etc/sysctl.d/40-ipv6.conf", "/etc/sysctl.d/40-ipv6.conf"]
 - ["fs/etc/sysconfig/nftables.conf", "/etc/sysconfig/nftables.conf"]
 - ["fs/etc/nftables/kube.nft", "/etc/nftables/kube.nft"]
 - ["fs/etc/nftables/kube-svcs.nft", "/etc/nftables/kube-svcs.nft"]
