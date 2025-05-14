@@ -17,6 +17,7 @@ add-files:
 - ["fs/etc/audit/auditd.conf", "/etc/audit/auditd.conf"]
 - ["fs/etc/audit/rules.d/50-harden.rules", "/etc/audit/rules.d/50-harden.rules"]
 - ["fs/etc/audit/rules.d/99-finalize.rules", "/etc/audit/rules.d/99-finalize.rules"]
+- ["fs/etc/polkit-1/rules.d/51-keepalived.rules", "/etc/polkit-1/rules.d/51-keepalived.rules"]
 
 postprocess:
 - chmod 000 /etc/shadow

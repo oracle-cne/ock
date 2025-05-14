@@ -31,7 +31,7 @@ PKI=$K8S/pki
 # This allows clusters to start and join with unique
 # names if DHCP does not assign hostnames or one is
 # not statically configured.
-if hostname | grep -q '^localhost\.'; then
+if hostname | grep -q '^localhost\.*'; then
 	HN=ocne$RANDOM
 	echo $HN > /etc/hostname
 	hostname $HN
@@ -46,11 +46,13 @@ sed -i -e 's/NODE_IP/'"$NODE_IP"'/g' ${K8S}/kubeadm.conf || true
 if [[ "$ACTION" == "" ]]; then
         kubeadm init --config /etc/ocne/kubeadm-default.conf
         KUBECONFIG=/etc/kubernetes/admin.conf kubectl taint node $(hostname)  node-role.kubernetes.io/control-plane:NoSchedule-
+ 	KUBECONFIG=/etc/kubernetes/admin.conf kubectl create namespace ocne-system
 elif [[ "$ACTION" == "init" ]]; then
         echo Initalizing new Kubernetes cluster
         mkdir -p $PKI
 
         kubeadm init --config ${K8S}/kubeadm.conf --upload-certs
+ 	KUBECONFIG=/etc/kubernetes/admin.conf kubectl create namespace ocne-system
 
         ENDPOINT=$(yq 'select(.kind == "ClusterConfiguration") | .controlPlaneEndpoint' < /etc/kubernetes/kubeadm.conf)
         ENDPOINT_IP=$(echo $ENDPOINT | cut -d: -f1)
