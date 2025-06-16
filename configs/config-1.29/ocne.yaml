@@ -11,6 +11,7 @@ packages:
 - ocne-selinux
 - audit
 - openssh-clients
+- kernel-4.18.0
 
 add-files:
 - ["systemd/80-ocne.preset", "/usr/lib/systemd/system-preset/80-ocne.preset"]
