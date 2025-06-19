@@ -1,0 +1,6 @@
+#! /bin/bash
+set -e
+
+IMAGE=$(yq -e '.nginx' < /usr/ock/catalog.yaml)
+
+exec podman run --name ocne-nginx --replace --rm --network=host --volume=/etc/ocne/nginx:/etc/nginx "${IMAGE}"
