@@ -1,11 +1,11 @@
 packages:
-- kubelet-1.30.10
-- kubeadm-1.30.10
-- kubectl-1.30.10
+- kubelet-1.30.13
+- kubeadm-1.30.13
+- kubectl-1.30.13
 - podman
 - yq
 - ignition-2.16.2
-- kubernetes-imgs-1.30.10
+- kubernetes-imgs-1.30.13
 - keepalived
 - qemu-kvm-7.2.0
 - ocne-selinux
@@ -28,8 +28,11 @@ add-files:
 - ["systemd/ocne-kube-update.sh", "/etc/ocne/ocne-kube-update.sh"]
 - ["systemd/ocne-kubeadm-upgrade.sh", "/etc/ocne/ocne-kubeadm-upgrade.sh"]
 - ["systemd/ocne-prune.service", "/usr/lib/systemd/system/ocne-prune.service"]
-- ["systemd/ocne-prune.sh", "/etc/ocne/ocne-prune.sh"]
 - ["systemd/kube-update.conf", "/etc/systemd/system/kubelet.service.d/kube-update.conf"]
+- ["systemd/ocne-prune.sh", "/etc/ocne/ocne-prune.sh"]
+- ["systemd/start_ocne_nginx", "/usr/bin/start_ocne_nginx"]
+- ["systemd/nginx.service", "/usr/lib/systemd/system/ocne-nginx.service"]
+- ["systemd/nginx-image.conf", "/etc/systemd/system/ocne-nginx.service.d/image.conf"]
 - ["files/crio.conf", "/etc/crio/crio.conf"]
 - ["files/kubeadm-default.conf", "/etc/ocne/kubeadm-default.conf"]
 - ["files/check-node-health.sh", "/usr/bin/check-node-health.sh"]
@@ -48,5 +51,7 @@ add-files:
 postprocess:
 - rm /etc/cni/net.d/100-crio-bridge.conf
 - groupadd -r keepalived_script
+- groupadd -r nginx_script
 - groupadd sugroup
 - useradd -r -s /sbin/nologin -g keepalived_script -M keepalived_script
+- useradd -r -s /sbin/nologin -g nginx_script -M nginx_script
