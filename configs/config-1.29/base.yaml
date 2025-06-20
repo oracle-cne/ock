@@ -1,7 +1,7 @@
 packages:
 - ostree
 - rpm-ostree
-- kernel-uek-core
+#- kernel-uek-core
 - xfsprogs
 - e2fsprogs
 - chrony
@@ -25,9 +25,10 @@ packages:
 - shim
 - efibootmgr
 - iscsi-initiator-utils
-- kernel-uek-modules
+#- kernel-uek-modules
 - nfs-utils
 - passwd
+- kernel
 
 packages-x86_64:
 - grub2-efi-x64

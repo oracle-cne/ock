@@ -1,0 +1,6 @@
+remove-from-packages:
+- ["kernel-uek-core", ".*"]
+- ["kernel-uek-modules", ".*"]
+
+packages:
+- kernel

@@ -22,6 +22,8 @@ remove-from-packages:
 - ["python3-policycoreutils", ".*"]
 - ["policycoreutils-python-utils", ".*"]
 - ["platform-python-3.6", ".*"]
+- ["kernel-uek-core", ".*"]
+- ["kernel-uek-modules", ".*"]
 
 install-langs:
 - en_US
