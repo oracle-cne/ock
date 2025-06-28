@@ -1,0 +1,16 @@
+[Unit]
+Description=Nginx load balancer for Kubernetes control plane nodes in OCNE
+Wants=network.target
+After=network.target
+Before=keepalived.service
+StartLimitIntervalSec=0
+
+[Service]
+ExecStart=/usr/bin/start_ocne_nginx
+ExecStop=podman stop ocne-nginx
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=keepalived.service

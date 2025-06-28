@@ -1,8 +1,8 @@
 packages:
-- kubelet-1.31.6
-- kubeadm-1.31.6
-- kubectl-1.31.6
-- kubernetes-imgs-1.31.6
+- kubelet-1.31.9
+- kubeadm-1.31.9
+- kubectl-1.31.9
+- kubernetes-imgs-1.31.9
 - podman
 - yq
 - ignition-2.16.2
@@ -28,8 +28,11 @@ add-files:
 - ["systemd/ocne-kube-update.sh", "/etc/ocne/ocne-kube-update.sh"]
 - ["systemd/ocne-kubeadm-upgrade.sh", "/etc/ocne/ocne-kubeadm-upgrade.sh"]
 - ["systemd/ocne-prune.service", "/usr/lib/systemd/system/ocne-prune.service"]
-- ["systemd/ocne-prune.sh", "/etc/ocne/ocne-prune.sh"]
 - ["systemd/kube-update.conf", "/etc/systemd/system/kubelet.service.d/kube-update.conf"]
+- ["systemd/ocne-prune.sh", "/etc/ocne/ocne-prune.sh"]
+- ["systemd/start_ocne_nginx", "/usr/bin/start_ocne_nginx"]
+- ["systemd/nginx.service", "/usr/lib/systemd/system/ocne-nginx.service"]
+- ["systemd/nginx-image.conf", "/etc/systemd/system/ocne-nginx.service.d/image.conf"]
 - ["files/crio.conf", "/etc/crio/crio.conf"]
 - ["files/kubeadm-default.conf", "/etc/ocne/kubeadm-default.conf"]
 - ["files/check-node-health.sh", "/usr/bin/check-node-health.sh"]
