@@ -1,5 +1,5 @@
 ref: ock
-automatic-version-prefix: "1.31"
+automatic-version-prefix: "1.32"
 
 documentation: false
 boot-location: modules

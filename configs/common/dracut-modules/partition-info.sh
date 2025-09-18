@@ -32,7 +32,7 @@ while [ $i -le 20 ]; do
 	sleep 1
 done
 
-if [ $i -eq 20 ]; then
+if [ $i -gt 20 ]; then
 	echo "Timed out waiting for root device"
 	exit 1
 fi
