@@ -1,0 +1,8 @@
+[ol8_oci_included]
+name=Oracle Software for OCI users on Oracle Linux $releasever ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/oci/included/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=1
+
+

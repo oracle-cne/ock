@@ -1,0 +1,30 @@
+remove-from-packages:
+- ["python3-libs", ".*"]
+- ["platform-python", ".*"]
+- ["platform-python-pip", ".*"]
+- ["platform-python-setuptools", ".*"]
+- ["python3-setools", ".*"]
+- ["python3-libnmstate", ".*"]
+- ["python3-gobject-base", ".*"]
+- ["python3-pip-wheel", ".*"]
+- ["python3-libselinux", ".*"]
+- ["python3-pyyaml", ".*"]
+- ["python3-setuptools", ".*"]
+- ["python3-libsemanage", ".*"]
+- ["python3-ply", ".*"]
+- ["python3-setuptools-wheel", ".*"]
+- ["python3-audit", ".*"]
+- ["python3-jsonschema", ".*"]
+- ["python3-bind", ".*"]
+- ["python3-varlink", ".*"]
+- ["python3-nispor", ".*"]
+- ["kata-image", ".*"]
+- ["python3-policycoreutils", ".*"]
+- ["policycoreutils-python-utils", ".*"]
+- ["platform-python-3.6", ".*"]
+
+install-langs:
+- en_US
+
+postprocess:
+- localedef --list-archive | grep -v -i ^en | xargs localedef --delete-from-archive

@@ -1,0 +1,55 @@
+packages:
+- kubelet-1.33.5
+- kubeadm-1.33.5
+- kubectl-1.33.5
+- kubernetes-imgs-1.33.5
+- podman
+- yq
+- ignition-2.16.2
+- keepalived
+- qemu-kvm-7.2.0
+- ocne-selinux
+- audit
+- openssh-clients
+
+add-files:
+- ["systemd/80-ocne.preset", "/usr/lib/systemd/system-preset/80-ocne.preset"]
+- ["systemd/update-ca-trust.service", "/usr/lib/systemd/system/update-ca-trust.service"]
+- ["systemd/update-ca-trust.path", "/usr/lib/systemd/system/update-ca-trust.path"]
+- ["systemd/ocne-disable-ignition.service", "/usr/lib/systemd/system/ocne-disable-ignition.service"]
+- ["systemd/ocne.service", "/usr/lib/systemd/system/ocne.service"]
+- ["systemd/ocne.sh", "/etc/ocne/ocne.sh"]
+- ["systemd/ocne-update.service", "/usr/lib/systemd/system/ocne-update.service"]
+- ["systemd/ocne-update.sh", "/etc/ocne/ocne-update.sh"]
+- ["systemd/ocne-image-cleanup.service", "/usr/lib/systemd/system/ocne-image-cleanup.service"]
+- ["systemd/ocne-image-cleanup.sh", "/etc/ocne/ocne-image-cleanup.sh"]
+- ["systemd/ocne-reset.service", "/usr/lib/systemd/system/ocne-reset.service"]
+- ["systemd/ocne-reset.sh", "/etc/ocne/ocne-reset.sh"]
+- ["systemd/ocne-kube-update.sh", "/etc/ocne/ocne-kube-update.sh"]
+- ["systemd/ocne-kubeadm-upgrade.sh", "/etc/ocne/ocne-kubeadm-upgrade.sh"]
+- ["systemd/ocne-prune.service", "/usr/lib/systemd/system/ocne-prune.service"]
+- ["systemd/kube-update.conf", "/etc/systemd/system/kubelet.service.d/kube-update.conf"]
+- ["systemd/ocne-prune.sh", "/etc/ocne/ocne-prune.sh"]
+- ["systemd/start_ocne_nginx", "/usr/bin/start_ocne_nginx"]
+- ["systemd/nginx.service", "/usr/lib/systemd/system/ocne-nginx.service"]
+- ["systemd/nginx-image.conf", "/etc/systemd/system/ocne-nginx.service.d/image.conf"]
+- ["files/crio.conf", "/etc/crio/crio.conf"]
+- ["files/kubeadm-default.conf", "/etc/ocne/kubeadm-default.conf"]
+- ["files/check-node-health.sh", "/usr/bin/check-node-health.sh"]
+- ["files/rescue.sh", "/usr/bin/rescue.sh"]
+- ["files/storage.conf", "/etc/containers/storage.conf"]
+- ["systemd/usr-lib-opt-cni-bin.mount", "/etc/systemd/system/usr-lib-opt-cni-bin.mount"]
+- ["dracut-modules/module-setup.sh", "/usr/lib/dracut/modules.d/35ocne/module-setup.sh"]
+- ["dracut-modules/partition-info.sh", "/usr/lib/dracut/modules.d/35ocne/partition-info.sh"]
+- ["dracut-modules/grow-rootfs.sh", "/usr/lib/dracut/modules.d/35ocne/grow-rootfs.sh"]
+- ["dracut-modules/grow-rootfs.service", "/usr/lib/dracut/modules.d/35ocne/grow-rootfs.service"]
+- ["dracut-modules/make-rootfs.sh", "/usr/lib/dracut/modules.d/35ocne/make-rootfs.sh"]
+- ["dracut-modules/make-rootfs.service", "/usr/lib/dracut/modules.d/35ocne/make-rootfs.service"]
+- ["dracut-modules/move-gpt-header.sh", "/usr/lib/dracut/modules.d/35ocne/move-gpt-header.sh"]
+- ["dracut-modules/move-gpt-header.service", "/usr/lib/dracut/modules.d/35ocne/move-gpt-header.service"]
+
+postprocess:
+- rm /etc/cni/net.d/100-crio-bridge.conf
+- groupadd -r keepalived_script
+- groupadd sugroup
+- useradd -r -s /sbin/nologin -g keepalived_script -M keepalived_script
