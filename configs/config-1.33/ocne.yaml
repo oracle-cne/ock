@@ -11,6 +11,8 @@ packages:
 - ocne-selinux
 - audit
 - openssh-clients
+- containernetworking-plugins-1.8.0
+- containernetworking-cni-1.3.0
 
 add-files:
 - ["systemd/80-ocne.preset", "/usr/lib/systemd/system-preset/80-ocne.preset"]
