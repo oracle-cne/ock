@@ -12,6 +12,7 @@ packages:
 - audit
 - openssh-clients
 - containernetworking-cni-1.3.0
+- containernetworking-plugins-1.8.0
 
 add-files:
 - ["systemd/80-ocne.preset", "/usr/lib/systemd/system-preset/80-ocne.preset"]
