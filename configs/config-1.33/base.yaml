@@ -7,7 +7,7 @@ packages:
 - chrony
 - polkit
 - systemd-container
-- containernetworking-plugins podman-plugins dnsmasq
+- podman-plugins dnsmasq
 - iptables
 - attr
 - openssl
