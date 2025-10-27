@@ -2,6 +2,7 @@ packages:
 - ostree
 - rpm-ostree
 - kernel-uek-core
+- kernel-uek
 - xfsprogs
 - e2fsprogs
 - chrony
