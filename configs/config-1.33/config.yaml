@@ -1,0 +1,26 @@
+add-files:
+- ["fs/etc/modprobe.d/blacklist.conf", "/etc/modprobe.d/blacklist.conf"]
+- ["fs/etc/systemd/coredump.conf", "/etc/systemd/coredump.conf"]
+- ["fs/etc/sudoers", "/etc/sudoers"]
+- ["fs/etc/ssh/sshd_config", "/etc/systemd/system/sshd_config"]
+- ["fs/etc/pam.d/su", "/etc/pam.d/su"]
+- ["fs/etc/security/faillock.conf", "/etc/security/faillock.conf"]
+- ["fs/etc/security/pwquality.conf", "/etc/security/pwquality.conf"]
+- ["fs/etc/security/pwhistory.conf", "/etc/security/pwhistory.conf"]
+- ["fs/etc/sysctl.d/30-harden.conf", "/etc/sysctl.d/30-harden.conf"]
+- ["fs/etc/sysctl.d/40-ipv6.conf", "/etc/sysctl.d/40-ipv6.conf"]
+- ["fs/etc/sysconfig/nftables.conf", "/etc/sysconfig/nftables.conf"]
+- ["fs/etc/nftables/kube.nft", "/etc/nftables/kube.nft"]
+- ["fs/etc/nftables/kube-svcs.nft", "/etc/nftables/kube-svcs.nft"]
+- ["fs/etc/nftables/main.nft", "/etc/nftables/main.nft"]
+- ["fs/etc/profile.d/harden.sh", "/etc/profile.d/harden.sh"]
+- ["fs/etc/audit/auditd.conf", "/etc/audit/auditd.conf"]
+- ["fs/etc/audit/rules.d/50-harden.rules", "/etc/audit/rules.d/50-harden.rules"]
+- ["fs/etc/audit/rules.d/99-finalize.rules", "/etc/audit/rules.d/99-finalize.rules"]
+- ["fs/etc/polkit-1/rules.d/51-keepalived.rules", "/etc/polkit-1/rules.d/51-keepalived.rules"]
+
+postprocess:
+- chmod 000 /etc/shadow
+- chmod 000 /etc/shadow-
+- chmod 000 /etc/gshadow
+- chmod 000 /etc/gshadow-

@@ -1,0 +1,6 @@
+[ol8_oracle_software]
+name=Oracle Software for Oracle Linux $releasever ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/oracle/software/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=1
