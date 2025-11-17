@@ -141,7 +141,7 @@ update() {
 	# sure that the node can actually be updated if it is marked.
 	#NODE_NAME=$(yq -r '.users[0].name' < "$KUBECONFIG" | cut -d: -f 3)
 	NODE_NAME=$(hostname)
-	kubectl annotate node -l "kubernetes.io/hostname=$NODE_NAME" ocne.oracle.com/update-available=true
+	kubectl annotate node "$NODE_NAME" ocne.oracle.com/update-available=true
 
 	# Success! Save the digest so we can compare the next time through the loop
 	IMAGE_DIGEST=$NEW_IMAGE_DIGEST
