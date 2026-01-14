@@ -1,8 +1,8 @@
 packages:
-- kubelet-1.31.11
-- kubeadm-1.31.11
-- kubectl-1.31.11
-- kubernetes-imgs-1.31.11
+- kubelet-1.31.14
+- kubeadm-1.31.14
+- kubectl-1.31.14
+- kubernetes-imgs-1.31.14
 - podman
 - yq
 - ignition-2.16.2

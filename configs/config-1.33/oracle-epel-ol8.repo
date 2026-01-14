@@ -1,0 +1,14 @@
+[ol8_developer_EPEL]
+name=Oracle Linux $releasever EPEL Packages for Development ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/developer/EPEL/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=1
+
+
+[ol8_developer_EPEL_modular]
+name=Oracle Linux $releasever EPEL Modular Packages for Development ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/developer/EPEL/modular/$basearch/
+gpgkey=https://yum.oracle.com/RPM-GPG-KEY-oracle-ol8
+gpgcheck=1
+enabled=0
