@@ -59,6 +59,7 @@ name=Oracle Cloud Native Environment version 2.0 ($basearch)
 baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/ocne/$basearch/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 gpgcheck=1
+module_hotfixes=1
 enabled=0
 
 [ol8_developer_olcne]
