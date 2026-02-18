@@ -1,7 +1,7 @@
 packages:
-- kubelet-1.32.10
-- kubeadm-1.32.10
-- kubectl-1.32.10
+- kubelet-1.32.12
+- kubeadm-1.32.12
+- kubectl-1.32.12
 - kubernetes-imgs-1.32.10
 - podman
 - yq
