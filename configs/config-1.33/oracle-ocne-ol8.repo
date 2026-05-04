@@ -60,6 +60,7 @@ baseurl=https://yum.oracle.com/repo/OracleLinux/OL8/ocne/$basearch/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 gpgcheck=1
 enabled=0
+module_hotfixes=1
 
 [ol8_developer_olcne]
 name=Developer Preview for Oracle Cloud Native Environment ($basearch)

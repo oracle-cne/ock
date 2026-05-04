@@ -1,0 +1,9 @@
+#! /bin/bash
+
+while true; do
+	sleep 1
+	HOSTNAME=$(hostname)
+	echo "$HOSTNAME" | grep '^localhost$' && continue
+	echo "$HOSTNAME" | grep '^localhost.localdomain$' && continue
+	exit 0
+done

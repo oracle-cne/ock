@@ -1,0 +1,11 @@
+[Unit]
+Description=Wait for a real hostname to be set
+Before=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/wait-for-hostname
+RemainAfterExit=yes
+
+[Install]
+WantedBy=network-online.target
