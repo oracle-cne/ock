@@ -1,0 +1,13 @@
+[Unit]
+Description=Wait for a real hostname to be set
+Before=network-online.target
+Before=kubeadm.service
+Before=ocne.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/wait-for-hostname
+RemainAfterExit=yes
+
+[Install]
+WantedBy=network-online.target
