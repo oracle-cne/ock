@@ -4,5 +4,6 @@ enable ocne-prune.service
 enable ocne-update.service
 enable ocne-image-cleanup.service
 enable usr-lib-opt-cni-bin.mount
+enable wait-for-hostname.service
 disable ocne-nginx.service
 disable keepalived.service

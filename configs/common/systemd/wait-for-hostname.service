@@ -1,6 +1,8 @@
 [Unit]
 Description=Wait for a real hostname to be set
 Before=network-online.target
+Before=kubeadm.service
+Before=ocne.service
 
 [Service]
 Type=oneshot
