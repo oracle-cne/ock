@@ -7,7 +7,7 @@ set -x
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
-upgrade() {
+set_images() {
 	MD=/etc/kubernetes/manifests
 	CATALOG=/usr/ock/catalog.yaml
 
@@ -19,12 +19,19 @@ upgrade() {
 	yq -i ".spec.containers[0].image = \"$KCM\"" "$MD/kube-controller-manager.yaml"
 	yq -i ".spec.containers[0].image = \"$KS\"" "$MD/kube-scheduler.yaml"
 	yq -i ".spec.containers[0].image = \"$E\"" "$MD/etcd.yaml"
+}
+
+upgrade() {
 	kubeadm certs renew all
 }
+
+# Images can change to anything at any time.  Always set the manifests to
+# the current catalog.
 
 # Write the current Kubernetes version to a known location.
 # This is used later on in the script to determine if a
 # "kubeadm upgrade" is required before starting kubelet.
+set_images
 
 # Output looks like this:
 # sh-4.4# kubeadm version -o yaml
