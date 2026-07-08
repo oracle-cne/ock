@@ -25,13 +25,10 @@ upgrade() {
 	kubeadm certs renew all
 }
 
-# Images can change to anything at any time.  Always set the manifests to
-# the current catalog.
 
 # Write the current Kubernetes version to a known location.
 # This is used later on in the script to determine if a
 # "kubeadm upgrade" is required before starting kubelet.
-set_images
 
 # Output looks like this:
 # sh-4.4# kubeadm version -o yaml
@@ -61,6 +58,10 @@ if [ ! -f "$KUBECONFIG" ]; then
 	echo "$VERSION" > "$VERSION_FILE"
 	exit 0
 fi
+
+# Images can change to anything at any time.  Always set the manifests to
+# the current catalog.
+set_images
 
 # If the current version is the same as the previous version, don't bother updating
 # There is a small chance that the version file doesn't exist yet.  If it doesn't,
