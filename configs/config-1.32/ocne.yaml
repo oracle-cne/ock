@@ -2,7 +2,7 @@ packages:
 - kubelet-1.32.13-2.el8
 - kubeadm-1.32.13-2.el8
 - kubectl-1.32.13-2.el8
-- kubernetes-imgs-1.32.13-2.el8
+- kubernetes-imgs-1.32.13-3.el8
 - podman
 - yq
 - ignition-2.16.2
