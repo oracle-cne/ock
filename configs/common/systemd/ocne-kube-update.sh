@@ -7,7 +7,7 @@ set -x
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
-upgrade() {
+set_images() {
 	MD=/etc/kubernetes/manifests
 	CATALOG=/usr/ock/catalog.yaml
 
@@ -19,8 +19,12 @@ upgrade() {
 	yq -i ".spec.containers[0].image = \"$KCM\"" "$MD/kube-controller-manager.yaml"
 	yq -i ".spec.containers[0].image = \"$KS\"" "$MD/kube-scheduler.yaml"
 	yq -i ".spec.containers[0].image = \"$E\"" "$MD/etcd.yaml"
+}
+
+upgrade() {
 	kubeadm certs renew all
 }
+
 
 # Write the current Kubernetes version to a known location.
 # This is used later on in the script to determine if a
@@ -54,6 +58,10 @@ if [ ! -f "$KUBECONFIG" ]; then
 	echo "$VERSION" > "$VERSION_FILE"
 	exit 0
 fi
+
+# Images can change to anything at any time.  Always set the manifests to
+# the current catalog.
+set_images
 
 # If the current version is the same as the previous version, don't bother updating
 # There is a small chance that the version file doesn't exist yet.  If it doesn't,
