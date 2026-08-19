@@ -35,8 +35,6 @@ add-files:
 - ["systemd/start_ocne_nginx", "/usr/bin/start_ocne_nginx"]
 - ["systemd/nginx.service", "/usr/lib/systemd/system/ocne-nginx.service"]
 - ["systemd/nginx-image.conf", "/etc/systemd/system/ocne-nginx.service.d/image.conf"]
-- ["systemd/wait-for-hostname.service", "/usr/lib/systemd/system/wait-for-hostname.service"]
-- ["systemd/wait-for-hostname", "/usr/bin/wait-for-hostname"]
 - ["files/crio.conf", "/etc/crio/crio.conf"]
 - ["files/kubeadm-default.conf", "/etc/ocne/kubeadm-default.conf"]
 - ["files/check-node-health.sh", "/usr/bin/check-node-health.sh"]
