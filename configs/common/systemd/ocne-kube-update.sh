@@ -7,7 +7,20 @@ set -x
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
-upgrade() {
+set_image() {
+	local manifest="$1"
+	local image="$2"
+
+	if [ ! -f "$manifest" ]; then
+		echo "Manifest $manifest does not exist; skipping image update."
+		return
+	fi
+
+	echo "Updating image in manifest $manifest."
+	yq -i ".spec.containers[0].image = \"$image\"" "$manifest"
+}
+
+set_images() {
 	MD=/etc/kubernetes/manifests
 	CATALOG=/usr/ock/catalog.yaml
 
@@ -15,12 +28,17 @@ upgrade() {
 	KCM="$(yq eval .kubeControllerManager < $CATALOG)"
 	KS="$(yq eval .kubeScheduler < $CATALOG)"
 	E="$(yq eval .etcd < $CATALOG)"
-	yq -i ".spec.containers[0].image = \"$KAS\"" "$MD/kube-apiserver.yaml"
-	yq -i ".spec.containers[0].image = \"$KCM\"" "$MD/kube-controller-manager.yaml"
-	yq -i ".spec.containers[0].image = \"$KS\"" "$MD/kube-scheduler.yaml"
-	yq -i ".spec.containers[0].image = \"$E\"" "$MD/etcd.yaml"
+
+	set_image "$MD/kube-apiserver.yaml" "$KAS"
+	set_image "$MD/kube-controller-manager.yaml" "$KCM"
+	set_image "$MD/kube-scheduler.yaml" "$KS"
+	set_image "$MD/etcd.yaml" "$E"
+}
+
+upgrade() {
 	kubeadm certs renew all
 }
+
 
 # Write the current Kubernetes version to a known location.
 # This is used later on in the script to determine if a
@@ -63,6 +81,10 @@ if [ ! -f "$VERSION_FILE" ]; then
 	echo "$VERSION" > "$VERSION_FILE"
 	exit 0
 fi
+
+# Images can change to anything at any time.  Always set the manifests to
+# the current catalog after confirming this is not the first update run.
+set_images
 
 OLD_VERSION="$(< ${VERSION_FILE})"
 OLDEST_VERSION=$(printf "${OLD_VERSION}\n${VERSION}" | sort -V | head -1)
